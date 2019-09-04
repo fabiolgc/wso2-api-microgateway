@@ -1,0 +1,24 @@
+open ~/.bash_profile
+open ~/.zshrc
+sudo nano /etc/paths
+ 
+cd ~/Documents/Demo/TOTVS 
+ 
+ 
+
+micro-gw build bookstore --deployment-config /Users/fabio/Documents/Demo/TOTVS/bookstore/conf/deployment.toml
+ballerina build ../../microservices/books-service.bal
+
+
+gateway ./bookstore/target/bookstore.balx
+ballerina run -e b7a.log.level=DEBUG ./books-service.bal
+
+
+docker run -d -p 9090:9090 -p 9095:9095 fabiowso2/bookstore-microservice:1.0.0
+docker run -d -p 9090:9090 -p 9095:9095 fabiowso2/bookstore-microgateway:1.0.0
+
+
+
+Enable the schema validation
+Service Discovery
+Distributed throttling 
