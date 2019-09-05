@@ -4,7 +4,7 @@ import ballerinax/docker;
 
 @docker:Config {
     name: "fabiowso2/bookstore-microservice",
-    tag: "1.0.0", 		
+    tag: "1.0.4", 		
     username: "$env{DOCKER_USERNAME}",
     password: "$env{DOCKER_PASSWORD}",
     baseImage: "ballerina/ballerina:0.991.0",

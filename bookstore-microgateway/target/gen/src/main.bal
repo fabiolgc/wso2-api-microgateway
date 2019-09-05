@@ -1,8 +1,8 @@
 
 public function main() {
     
-    string[] Kindel_Book_Store__1_0_0_service = [ "get_f7296f4d_2ce8_4258_98d9_e4019d1f6650"
-                                , "get_8de3dfa7_9d6a_415e_92a9_fbb5b1c2fbac"
+    string[] Kindel_Book_Store__1_0_0_service = [ "get_95cae746_a90f_4d14_bc38_a77824911850"
+                                , "get_e3791e85_dc09_4c25_a4fd_cf396e8ec43f"
                                 ];
     gateway:populateAnnotationMaps("Kindel_Book_Store__1_0_0", Kindel_Book_Store__1_0_0, Kindel_Book_Store__1_0_0_service);
     

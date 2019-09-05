@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: bookstore-microgateway
-          image: fabiowso2/bookstore-microgateway:1.0.3
+          image: fabiowso2/bookstore-microgateway:1.0.4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9090

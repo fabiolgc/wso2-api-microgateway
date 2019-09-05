@@ -12,7 +12,7 @@ import wso2/gateway;
 
 
 
-     http:Client get_f7296f4d_2ce8_4258_98d9_e4019d1f6650_prod = new (
+     http:Client get_95cae746_a90f_4d14_bc38_a77824911850_prod = new (
 gateway:retrieveConfig("booklist_prod_endpoint_0","http://books-list-service:9099"),
 config = { 
     httpVersion: gateway:getHttpVersion(),
@@ -31,7 +31,7 @@ secureSocket:{
     
     
 
-     http:Client get_8de3dfa7_9d6a_415e_92a9_fbb5b1c2fbac_prod = new (
+     http:Client get_e3791e85_dc09_4c25_a4fd_cf396e8ec43f_prod = new (
 gateway:retrieveConfig("booksearch_prod_endpoint_0","http://books-list-service:9099"),
 config = { 
     httpVersion: gateway:getHttpVersion(),
@@ -89,7 +89,7 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_f7296f4d_2ce8_4258_98d9_e4019d1f6650 (http:Caller outboundEp, http:Request req) {
+    resource function get_95cae746_a90f_4d14_bc38_a77824911850 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
     
     
@@ -122,7 +122,7 @@ apiSecureListener {
                 
                 
                     
-    clientResponse = get_f7296f4d_2ce8_4258_98d9_e4019d1f6650_prod->forward(urlPostfix, req);
+    clientResponse = get_95cae746_a90f_4d14_bc38_a77824911850_prod->forward(urlPostfix, req);
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";
                     
@@ -195,7 +195,7 @@ clientResponse = res;
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_8de3dfa7_9d6a_415e_92a9_fbb5b1c2fbac (http:Caller outboundEp, http:Request req) {
+    resource function get_e3791e85_dc09_4c25_a4fd_cf396e8ec43f (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
     
     validateHeader (outboundEp, req);
@@ -228,7 +228,7 @@ clientResponse = res;
                 
                 
                     
-    clientResponse = get_8de3dfa7_9d6a_415e_92a9_fbb5b1c2fbac_prod->forward(urlPostfix, req);
+    clientResponse = get_e3791e85_dc09_4c25_a4fd_cf396e8ec43f_prod->forward(urlPostfix, req);
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";
                     

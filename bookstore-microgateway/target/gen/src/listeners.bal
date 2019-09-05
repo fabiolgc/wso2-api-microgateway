@@ -62,7 +62,7 @@ sslVerifyClient: config:getAsString("mutualSSLConfig.sslVerifyClient")
 @docker:Config {
     name:"bookstore-microgateway",
     registry:"fabiowso2",
-    tag:"1.0.3",
+    tag:"1.0.4",
     baseImage:"wso2/wso2micro-gw:3.0.1",
     push:true,
     username:"$env{DOCKER_USERNAME}",
