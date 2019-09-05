@@ -7,12 +7,28 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
+  - host: api.bookstore.com
+    http:
       paths:
-      - path: /
-        backend:
-          #serviceName: books-list-service
-          #servicePort: 9099
+      - backend:
           serviceName: bookstore-microgateway-service
           servicePort: 9090
+  - host: etcd.bookstore.com
+    http:
+      paths:
+      - backend:
+          serviceName: bookstore-microgateway-service
+          servicePort: 2379
+
+#---          
+#  - http:
+#      paths:
+#      - path: /bookstore
+#        backend:
+#          serviceName: bookstore-microgateway-service
+#          servicePort: 9090
+#      - path: /etcd
+#        backend:
+#          serviceName: etcd-service
+#          servicePort: 9090
           

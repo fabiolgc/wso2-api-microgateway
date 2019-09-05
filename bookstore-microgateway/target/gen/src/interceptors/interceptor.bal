@@ -3,7 +3,8 @@ import ballerina/log;
 import ballerina/http;
 
 public function validateHeader (http:Caller outboundEp, http:Request req) {
-    if(!req.hasHeader("x-auth")) {
+    log:printDebug("validateHeader - request interceptor");
+	if(!req.hasHeader("x-auth")) {
     	http:Response response= new;
     	response.setJsonPayload({"error":true, "message": "x-auth header is missing in the request"});
     	var outboundResponse = outboundEp->respond(response);
@@ -15,7 +16,8 @@ public function validateHeader (http:Caller outboundEp, http:Request req) {
 }
 
 public function sendCustomRespone (http:Caller outboundEp, http:Response res) {
-    json|error payload = res.getJsonPayload();
+    log:printDebug("sendCustomRespone - response interceptor");
+	json|error payload = res.getJsonPayload();
     if(payload is json ) {
     	if(payload.toString().equalsIgnoreCase("{}")) {
 	    	http:Response response= new;

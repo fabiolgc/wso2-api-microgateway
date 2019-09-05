@@ -89,7 +89,7 @@ function getOpenAPIs() returns map<json> {
       }
     }, {
       "booksearch" : {
-        "urls" : [ "http://books-list-service:9099" ]
+        "urls" : [ "etcd(booksearch,http://books-list-service:9099)" ]
       }
     } ]
   }

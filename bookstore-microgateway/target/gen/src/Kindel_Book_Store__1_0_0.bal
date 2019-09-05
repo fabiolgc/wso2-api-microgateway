@@ -12,7 +12,7 @@ import wso2/gateway;
 
 
 
-     http:Client get_95cae746_a90f_4d14_bc38_a77824911850_prod = new (
+     http:Client get_eee4622a_0c92_4c39_9b30_887671aaefc7_prod = new (
 gateway:retrieveConfig("booklist_prod_endpoint_0","http://books-list-service:9099"),
 config = { 
     httpVersion: gateway:getHttpVersion(),
@@ -31,8 +31,9 @@ secureSocket:{
     
     
 
-     http:Client get_e3791e85_dc09_4c25_a4fd_cf396e8ec43f_prod = new (
-gateway:retrieveConfig("booksearch_prod_endpoint_0","http://books-list-service:9099"),
+     http:Client get_25c43937_38f8_4de5_b322_787fd294f182_prod = new (
+gateway:etcdSetup("booksearch_prod_endpoint_0",
+"booksearch_prod_0_etcdKey", "http://books-list-service:9099", "booksearch"),
 config = { 
     httpVersion: gateway:getHttpVersion(),
 secureSocket:{
@@ -89,7 +90,7 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_95cae746_a90f_4d14_bc38_a77824911850 (http:Caller outboundEp, http:Request req) {
+    resource function get_eee4622a_0c92_4c39_9b30_887671aaefc7 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
     
     
@@ -122,7 +123,7 @@ apiSecureListener {
                 
                 
                     
-    clientResponse = get_95cae746_a90f_4d14_bc38_a77824911850_prod->forward(urlPostfix, req);
+    clientResponse = get_eee4622a_0c92_4c39_9b30_887671aaefc7_prod->forward(urlPostfix, req);
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";
                     
@@ -195,7 +196,7 @@ clientResponse = res;
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_e3791e85_dc09_4c25_a4fd_cf396e8ec43f (http:Caller outboundEp, http:Request req) {
+    resource function get_25c43937_38f8_4de5_b322_787fd294f182 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
     
     validateHeader (outboundEp, req);
@@ -228,7 +229,74 @@ clientResponse = res;
                 
                 
                     
-    clientResponse = get_e3791e85_dc09_4c25_a4fd_cf396e8ec43f_prod->forward(urlPostfix, req);
+    
+        
+            
+                endpointEtcdConfigValues["booksearch_prod__0_etcdKey"] = "booksearch";
+            
+        
+        foreach var (etcdKeyConfigValue,defaultEtcdKey) in endpointEtcdConfigValues {
+            string etcdKey = gateway:retrieveConfig(etcdKeyConfigValue, defaultEtcdKey);
+            if (etcdKey != "" && gateway:etcdConnectionEstablished) {
+                hasUrlChanged = <boolean>gateway:urlChanged[etcdKey];
+                if(hasUrlChanged is boolean) {
+                    if (reinitRequired == false) {
+                        reinitRequired = hasUrlChanged;
+                        if (hasUrlChanged == true) {
+                            failedEtcdKeyConfigValue = etcdKeyConfigValue;
+                        failedEtcdKey = etcdKey;
+                        }
+                    }
+                } else {
+                log:printError("Error in checking for Re-initialization", err = hasUrlChanged);
+                }
+            }
+        }
+                        if (reinitRequired) {
+                        //destination_attribute = <string>gateway:etcdUrls[etcdKey];
+                         var err = trap
+get_25c43937_38f8_4de5_b322_787fd294f182_prod.__init
+
+                (<string>gateway:etcdUrls[<string> gateway:retrieveConfig("booksearch_prod_0_etcdKey","")], config = { 
+    httpVersion: gateway:getHttpVersion(),
+secureSocket:{
+    trustStore: {
+           path: gateway:getConfigValue(gateway:LISTENER_CONF_INSTANCE_ID, gateway:TRUST_STORE_PATH,
+               "${ballerina.home}/bre/security/ballerinaTruststore.p12"),
+           password: gateway:getConfigValue(gateway:LISTENER_CONF_INSTANCE_ID, gateway:TRUST_STORE_PASSWORD, "ballerina")
+     },
+     verifyHostname:gateway:getConfigBooleanValue(gateway:HTTP_CLIENTS_INSTANCE_ID, gateway:ENABLE_HOSTNAME_VERIFICATION, true)
+} });
+ 
+                        
+                        
+
+                            if(err is error) {
+                                reinitFailed = true;
+                                gateway:urlChanged[failedEtcdKey] = true;
+
+                                http:Response res = new;
+                                res.statusCode = 500;
+                                json payload = {
+                                    "fault": {
+                                        "code": "101503",
+                                        "message": "Runtime Error",
+                                        "description": "Error connecting to the back end"
+                                    }
+                                };
+                                runtime:getInvocationContext().attributes["error_code"] = "101503";
+                                res.setPayload(payload);
+                                clientResponse = res;
+                                log:printError("URL defined at etcd for key " + config:getAsString(failedEtcdKeyConfigValue) + " is invalid");
+                            }
+                            reinitRequired = false;
+                        }
+
+
+
+    if (!reinitFailed) {
+        clientResponse = get_25c43937_38f8_4de5_b322_787fd294f182_prod->forward(urlPostfix, req);
+    }
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";
                     

@@ -62,8 +62,8 @@ x-wso2-endpoints:
     - http://books-list-service:9099
  - booksearch:
     urls:
-    - http://books-list-service:9099  
-    #- etcd(booksearch,http://books-list-service:9099)
+    #- http://books-list-service:9099  
+    - etcd(booksearch,http://books-list-service:9099)
 
 
 

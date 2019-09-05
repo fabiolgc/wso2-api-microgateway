@@ -6,7 +6,7 @@ cd ~/Documents/Demo/TOTVS
  
  
 
-micro-gw build bookstore --deployment-config /Users/fabio/Documents/Demo/TOTVS/bookstore/conf/deployment.toml
+micro-gw build bookstore-microgateway --deployment-config /Users/fabio/Documents/Demo/wso2-api-microgateway/bookstore-microgateway/conf/deployment.toml
 ballerina build ../../microservices/books-service.bal
 
 
