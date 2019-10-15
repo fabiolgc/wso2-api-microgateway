@@ -36,3 +36,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Remove Service Account File #
+######################
+service-account.json
