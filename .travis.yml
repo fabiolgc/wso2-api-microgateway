@@ -19,6 +19,6 @@ before_install:
 
 deploy:
   provider: script
-  script: bash ./scripts/deploy-gcp.sh
+  script: bash ./deploy.sh
   on:
     branch: master
