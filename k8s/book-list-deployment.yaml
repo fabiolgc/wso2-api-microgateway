@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: books-list
-          image: fabiowso2/bookstore-microservice:1.0.4
+          image: fabiowso2/bookstore-microservice:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9099
