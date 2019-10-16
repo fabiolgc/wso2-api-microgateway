@@ -17,9 +17,6 @@ before_install:
   - gcloud container clusters get-credentials wso2-cluster	
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 
 
-script:
-  - docker run -d -p 9090:9090 -p 9095:9095 fabiowso2/bookstore-microservice-test 
-
 deploy:
   provider: script
   script: bash ./scripts/deploy-gcp.sh
