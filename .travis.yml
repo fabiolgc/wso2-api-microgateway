@@ -17,6 +17,7 @@ before_install:
   - gcloud container clusters get-credentials wso2-cluster	 
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t fabiowso2/bookstore-microservice:test -f ./microservice/docker/Dockerfile
 
 deploy:
   provider: script
