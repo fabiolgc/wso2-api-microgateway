@@ -21,7 +21,7 @@ public function sendCustomRespone (http:Caller outboundEp, http:Response res) {
     if(payload is json ) {
     	if(payload.toString().equalsIgnoreCase("{}")) {
 	    	http:Response response= new;
-	    	response.setJsonPayload({"length":"0"});
+	    	response.setJsonPayload({"message":"length = 0"});
 	    	var outboundResponse = outboundEp->respond(response);
 	        if (outboundResponse is error) {
 	        	log:printError("Error when sending response", err = outboundResponse);
