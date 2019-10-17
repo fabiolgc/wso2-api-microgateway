@@ -10,7 +10,7 @@ spec:
     - http:
         paths:
           - path: /
-            - backend:
+            backend:
               serviceName: bookstore-microgateway-service
               servicePort: 9090
   
