@@ -27,8 +27,8 @@ ${KUBERNETES_CLIENT} create -f ../k8s/book-list/book-list-deployment.yaml
 ${KUBERNETES_CLIENT} create -f ../k8s/book-list/book-list-service.yaml
 
 echoBold 'Deploying API MicroGateway'
-${KUBERNETES_CLIENT} create -f ../k8s/bookstore-microgateway/bookstore-microgateway-deployment.yaml
-${KUBERNETES_CLIENT} create -f ../k8s/bookstore-microgateway/bookstore-microgateway-service.yaml
+${KUBERNETES_CLIENT} create -f ../k8s/microgateway/bookstore-microgateway-deployment.yaml
+${KUBERNETES_CLIENT} create -f ../k8s/microgateway/bookstore-microgateway-service.yaml
 
 #sleep 5s
 

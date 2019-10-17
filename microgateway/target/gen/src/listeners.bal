@@ -62,7 +62,7 @@ sslVerifyClient: config:getAsString("mutualSSLConfig.sslVerifyClient")
 @docker:Config {
     name:"bookstore-microgateway",
     registry:"fabiowso2",
-    tag:"1.0.4",
+    tag:"latest",
     baseImage:"wso2/wso2micro-gw:3.0.1",
     push:true,
     username:"$env{DOCKER_USERNAME}",
@@ -73,7 +73,7 @@ sslVerifyClient: config:getAsString("mutualSSLConfig.sslVerifyClient")
     @docker:CopyFiles {
         files: [
             
-                {  source:"/Users/fabio/Documents/Demo/wso2-api-microgateway/bookstore-microgateway/conf/micro-gw.conf", 
+                {  source:"/Users/fabio/Documents/Demo/wso2-api-microgateway/microgateway/conf/micro-gw.conf", 
                    target:"/home/ballerina/conf/micro-gw.conf", 
                    isBallerinaConf:true 
                 }
