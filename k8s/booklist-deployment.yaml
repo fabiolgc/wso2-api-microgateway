@@ -21,10 +21,3 @@ spec:
           env:
           - name: "b7a_log_level"
             value: "DEBUG"
-          resources:
-            limits:
-              memory: 512Mi
-              cpu: 1000i
-            requests:
-              memory: 137Mi
-              cpu: 200i

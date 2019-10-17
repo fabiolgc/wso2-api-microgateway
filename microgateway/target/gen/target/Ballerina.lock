@@ -1,0 +1,19 @@
+[project]
+name = ""
+version = ""
+lockfileversion = "1"
+ballerinaversion = "0.990.5"
+modules = [ "src" ]
+
+[[module]] 
+name = "src"
+imports = [{org="wso2", name="gateway",version="0.0.0"},{org="ballerinax", name="docker",version="0.0.0"}]
+
+[[module]] 
+org = "ballerinax"
+name = "docker"
+
+[[module]] 
+org = "wso2"
+name = "gateway"
+
