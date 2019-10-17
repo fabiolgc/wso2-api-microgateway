@@ -18,4 +18,3 @@ spec:
     resource:
       name: memory
       targetAverageUtilization: 60
-      #targetAverageValue: 2Gi
