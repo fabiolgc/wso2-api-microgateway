@@ -8,4 +8,4 @@ docker push fabiowso2/bookstore-microservice:$SHA
 
 # deploy artifacts to kubernetes
 kubectl apply -f k8s
-kubectl set image deployments/books-list-deployment books-list-deployment=fabiowso2/bookstore-microservice:$SHA
+kubectl set image deployment/books-list-deployment books-list-deployment=fabiowso2/bookstore-microservice:$SHA
