@@ -1,0 +1,21 @@
+[docker]
+  [docker.dockerConfig]
+    enable = true
+    name = 'bookstore-microgateway'
+    registry = 'fabiowso2'
+    tag = 'latest'
+    #buildImage = ''
+    #dockerHost = ''
+    #dockerCertPath = ''
+    baseImage = 'wso2/wso2micro-gw:3.0.1'
+    #enableDebug = ''
+    #debugPort = ''
+    push = true
+    username = "$env{DOCKER_USERNAME}"
+    password = "$env{DOCKER_PASSWORD}"
+  [docker.dockerCopyFiles]
+    enable = true
+    [[docker.dockerCopyFiles.files]]
+        source = '/Users/fabio/Documents/Demo/wso2-api-microgateway/microgateway/conf/micro-gw.conf'
+        target = '/home/ballerina/conf/micro-gw.conf'
+        isBallerinaConf = true
