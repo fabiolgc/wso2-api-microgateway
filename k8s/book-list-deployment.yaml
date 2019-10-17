@@ -13,7 +13,7 @@ spec:
         component: books-list
     spec:
       containers:
-        - name: books-list
+        - name: books-list-deployment
           image: fabiowso2/bookstore-microservice:latest
           imagePullPolicy: IfNotPresent
           ports:
