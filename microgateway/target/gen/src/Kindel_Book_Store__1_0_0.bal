@@ -12,7 +12,7 @@ import wso2/gateway;
 
 
 
-     http:Client get_9f28b77d_fae8_41e2_a425_9325a01f8ec6_prod = new (
+     http:Client get_5253c222_92da_4e82_9300_651c561f9b74_prod = new (
 gateway:retrieveConfig("booklist_prod_endpoint_0","http://books-list-service:9099"),
 config = { 
     httpVersion: gateway:getHttpVersion(),
@@ -31,7 +31,7 @@ secureSocket:{
     
     
 
-     http:Client get_8c4ebba1_d5c3_4c31_ab98_52271bfbd97f_prod = new (
+     http:Client get_8741450d_b525_4a15_913b_c704f3422954_prod = new (
 gateway:etcdSetup("booksearch_prod_endpoint_0",
 "booksearch_prod_0_etcdKey", "http://books-list-service:9099", "booksearch"),
 config = { 
@@ -90,7 +90,7 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_9f28b77d_fae8_41e2_a425_9325a01f8ec6 (http:Caller outboundEp, http:Request req) {
+    resource function get_5253c222_92da_4e82_9300_651c561f9b74 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
     
     
@@ -123,7 +123,7 @@ apiSecureListener {
                 
                 
                     
-    clientResponse = get_9f28b77d_fae8_41e2_a425_9325a01f8ec6_prod->forward(urlPostfix, req);
+    clientResponse = get_5253c222_92da_4e82_9300_651c561f9b74_prod->forward(urlPostfix, req);
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";
                     
@@ -196,7 +196,7 @@ clientResponse = res;
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_8c4ebba1_d5c3_4c31_ab98_52271bfbd97f (http:Caller outboundEp, http:Request req) {
+    resource function get_8741450d_b525_4a15_913b_c704f3422954 (http:Caller outboundEp, http:Request req) {
         handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
     
     validateHeader (outboundEp, req);
@@ -255,7 +255,7 @@ clientResponse = res;
                         if (reinitRequired) {
                         //destination_attribute = <string>gateway:etcdUrls[etcdKey];
                          var err = trap
-get_8c4ebba1_d5c3_4c31_ab98_52271bfbd97f_prod.__init
+get_8741450d_b525_4a15_913b_c704f3422954_prod.__init
 
                 (<string>gateway:etcdUrls[<string> gateway:retrieveConfig("booksearch_prod_0_etcdKey","")], config = { 
     httpVersion: gateway:getHttpVersion(),
@@ -295,7 +295,7 @@ secureSocket:{
 
 
     if (!reinitFailed) {
-        clientResponse = get_8c4ebba1_d5c3_4c31_ab98_52271bfbd97f_prod->forward(urlPostfix, req);
+        clientResponse = get_8741450d_b525_4a15_913b_c704f3422954_prod->forward(urlPostfix, req);
     }
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";

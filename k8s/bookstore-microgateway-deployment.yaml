@@ -13,7 +13,7 @@ spec:
         component: bookstore-microgateway
     spec:
       containers:
-        - name: bookstore-microgateway
+        - name: bookstore-microgateway-deployment
           image: fabiowso2/bookstore-microgateway:latest
           imagePullPolicy: IfNotPresent
           ports:
