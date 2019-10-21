@@ -9,11 +9,11 @@ spec:
   rules:
     - http:
         paths:
-          - path: /bookstore
+          - path: /api
             backend:
               serviceName: bookstore-microgateway-service
               servicePort: 9090
-          - path: /v3alpha
+          - path: /admin
             backend:
               serviceName: etcd-service
               servicePort: 2379
