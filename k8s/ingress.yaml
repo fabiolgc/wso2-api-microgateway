@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gateway-ingress
+  name: ingress
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -9,10 +9,14 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /bookstore
             backend:
               serviceName: bookstore-microgateway-service
               servicePort: 9090
+          - path: /v3alpha
+            backend:
+              serviceName: etcd-service
+              servicePort: 2379
   
 
   # rules:
