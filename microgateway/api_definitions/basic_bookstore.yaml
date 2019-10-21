@@ -3,13 +3,6 @@ openapi: 3.0.0
 info:
   description: 'This is a service for an online bookstore'
   version: 1.0.0
-  title: Kindel Book Store
-  termsOfService: http://kindel.io/terms/
-  contact:
-    email: apiteam@kindel.io
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
 tags:
 - name: book
   description: Everything about your book available in store
