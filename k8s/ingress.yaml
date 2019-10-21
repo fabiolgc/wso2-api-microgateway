@@ -4,16 +4,12 @@ metadata:
   name: ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    #nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
         paths:
-          - path: /bookstore/
+          - path: /
             backend:
               serviceName: bookstore-microgateway-service
               servicePort: 9090
-          - path: /v3alpha/
-            backend:
-              serviceName: etcd-service
-              servicePort: 2379
