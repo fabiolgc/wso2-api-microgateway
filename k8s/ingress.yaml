@@ -9,14 +9,14 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api
+          - path: 
             backend:
               serviceName: bookstore-microgateway-service
               servicePort: 9090
-          - path: /admin
-            backend:
-              serviceName: etcd-service
-              servicePort: 2379
+          # - path: /admin
+          #   backend:
+          #     serviceName: etcd-service
+          #     servicePort: 2379
   
 
   # rules:
