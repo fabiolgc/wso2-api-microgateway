@@ -1,0 +1,32 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: etcd-deployment
+# spec:
+#   replicas: 1
+#   selector: 
+#     matchLabels: 
+#       component: etcd
+#   template:
+#     metadata:
+#       labels: 
+#         component: etcd
+#     spec:
+#       containers:
+#         - args: []
+#           command: []
+#           env:
+#           - name: "ALLOW_NONE_AUTHENTICATION"
+#             value: "yes"
+#           - name: "etcdurl"
+#             value: "http://35.226.63.174:30122"
+#           envFrom: []
+#           image: "bitnami/etcd"
+#           imagePullPolicy: "IfNotPresent"
+#           name: "etcd-deployment"
+#           ports:
+#           - containerPort: 2379
+#             protocol: "TCP"
+#           - containerPort: 2380
+#             protocol: "TCP"
+
