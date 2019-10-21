@@ -17,9 +17,9 @@ ${KUBERNETES_CLIENT} create namespace wso2
 # switch the context to new 'wso2' namespace
 ${KUBERNETES_CLIENT} config set-context $(${KUBERNETES_CLIENT} config current-context) --namespace=wso2
 
-# echoBold 'Deploying ETCD - Service Discovery'
-# ${KUBERNETES_CLIENT} create -f ../k8s/etcd/etcd-deployment.yaml
-# ${KUBERNETES_CLIENT} create -f ../k8s/etcd/etcd-service.yaml
+# # echoBold 'Deploying ETCD - Service Discovery'
+# ${KUBERNETES_CLIENT} create -f ../k8s/etcd-deployment.yaml
+# ${KUBERNETES_CLIENT} create -f ../k8s/etcd-service.yaml
 
 
 echoBold 'Deploying Microervices (backend)'
