@@ -1,18 +1,9 @@
 
 function getOpenAPIs() returns map<json> {
-	return {  "Kindel_Book_Store__1_0_0" : {
+	return {  "null__1_0_0" : {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "Kindel Book Store",
     "description" : "This is a service for an online bookstore",
-    "termsOfService" : "http://kindel.io/terms/",
-    "contact" : {
-      "email" : "apiteam@kindel.io"
-    },
-    "license" : {
-      "name" : "Apache 2.0",
-      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
-    },
     "version" : "1.0.0"
   },
   "servers" : [ {

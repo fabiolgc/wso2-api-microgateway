@@ -1,10 +1,10 @@
 
 public function main() {
     
-    string[] Kindel_Book_Store__1_0_0_service = [ "get_8108b1e1_928a_4b81_b75a_789b845bfab0"
-                                , "get_0d8daead_ea32_437a_be2f_127a1a75ef75"
+    string[] null__1_0_0_service = [ "get_b3d36254_6ded_4944_a65b_41ce5aac299e"
+                                , "get_86e78e5b_8693_44f3_9613_3a8b5b33d3e1"
                                 ];
-    gateway:populateAnnotationMaps("Kindel_Book_Store__1_0_0", Kindel_Book_Store__1_0_0, Kindel_Book_Store__1_0_0_service);
+    gateway:populateAnnotationMaps("null__1_0_0", null__1_0_0, null__1_0_0_service);
     
 
     initThrottlePolicies();
