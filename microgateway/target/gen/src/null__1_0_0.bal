@@ -12,7 +12,7 @@ import wso2/gateway;
 
 
 
-     http:Client get_8108b1e1_928a_4b81_b75a_789b845bfab0_prod = new (
+     http:Client get_b3d36254_6ded_4944_a65b_41ce5aac299e_prod = new (
 gateway:retrieveConfig("booklist_prod_endpoint_0","http://books-list-service:9099"),
 config = { 
     httpVersion: gateway:getHttpVersion(),
@@ -31,7 +31,7 @@ secureSocket:{
     
     
 
-     http:Client get_0d8daead_ea32_437a_be2f_127a1a75ef75_prod = new (
+     http:Client get_86e78e5b_8693_44f3_9613_3a8b5b33d3e1_prod = new (
 gateway:etcdSetup("booksearch_prod_endpoint_0",
 "booksearch_prod_0_etcdKey", "http://books-list-service:9099", "booksearch"),
 config = { 
@@ -72,10 +72,10 @@ secureSocket:{
 
 @gateway:API {
     publisher:"",
-    name:"Kindel Book Store",
+    name:"",
     apiVersion: "1.0.0" 
 }
-service Kindel_Book_Store__1_0_0 on apiListener,
+service null__1_0_0 on apiListener,
 apiSecureListener {
 
 
@@ -90,8 +90,8 @@ apiSecureListener {
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_8108b1e1_928a_4b81_b75a_789b845bfab0 (http:Caller outboundEp, http:Request req) {
-        handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
+    resource function get_b3d36254_6ded_4944_a65b_41ce5aac299e (http:Caller outboundEp, http:Request req) {
+        handleExpectHeaderFornull__1_0_0(outboundEp, req);
     
     
     string urlPostfix = untaint req.rawPath.replace("/bookstore/v1","");
@@ -123,7 +123,7 @@ apiSecureListener {
                 
                 
                     
-    clientResponse = get_8108b1e1_928a_4b81_b75a_789b845bfab0_prod->forward(urlPostfix, req);
+    clientResponse = get_b3d36254_6ded_4944_a65b_41ce5aac299e_prod->forward(urlPostfix, req);
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";
                     
@@ -196,8 +196,8 @@ clientResponse = res;
         }
     }
     @gateway:RateLimit{policy : "1KPerMin"}
-    resource function get_0d8daead_ea32_437a_be2f_127a1a75ef75 (http:Caller outboundEp, http:Request req) {
-        handleExpectHeaderForKindel_Book_Store__1_0_0(outboundEp, req);
+    resource function get_86e78e5b_8693_44f3_9613_3a8b5b33d3e1 (http:Caller outboundEp, http:Request req) {
+        handleExpectHeaderFornull__1_0_0(outboundEp, req);
     
     validateHeader (outboundEp, req);
     string urlPostfix = untaint req.rawPath.replace("/bookstore/v1","");
@@ -255,7 +255,7 @@ clientResponse = res;
                         if (reinitRequired) {
                         //destination_attribute = <string>gateway:etcdUrls[etcdKey];
                          var err = trap
-get_0d8daead_ea32_437a_be2f_127a1a75ef75_prod.__init
+get_86e78e5b_8693_44f3_9613_3a8b5b33d3e1_prod.__init
 
                 (<string>gateway:etcdUrls[<string> gateway:retrieveConfig("booksearch_prod_0_etcdKey","")], config = { 
     httpVersion: gateway:getHttpVersion(),
@@ -295,7 +295,7 @@ secureSocket:{
 
 
     if (!reinitFailed) {
-        clientResponse = get_0d8daead_ea32_437a_be2f_127a1a75ef75_prod->forward(urlPostfix, req);
+        clientResponse = get_86e78e5b_8693_44f3_9613_3a8b5b33d3e1_prod->forward(urlPostfix, req);
     }
 
 runtime:getInvocationContext().attributes["destination"] = "http://books-list-service:9099";
@@ -358,7 +358,7 @@ clientResponse = res;
 
 }
 
-    function handleExpectHeaderForKindel_Book_Store__1_0_0 (http:Caller outboundEp, http:Request req ) {
+    function handleExpectHeaderFornull__1_0_0 (http:Caller outboundEp, http:Request req ) {
         if (req.expects100Continue()) {
             req.removeHeader("Expect");
             var result = outboundEp->continue();
@@ -368,7 +368,7 @@ clientResponse = res;
         }
     }
 
-function getUrlOfEtcdKeyForReInitKindel_Book_Store__1_0_0(string defaultUrlRef,string etcdRef, string defaultUrl, string etcdKey) returns string {
+function getUrlOfEtcdKeyForReInitnull__1_0_0(string defaultUrlRef,string etcdRef, string defaultUrl, string etcdKey) returns string {
     string retrievedEtcdKey = <string> gateway:retrieveConfig(etcdRef,etcdKey);
     gateway:urlChanged[<string> retrievedEtcdKey] = false;
     string url = <string> gateway:etcdUrls[retrievedEtcdKey];
